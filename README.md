@@ -1,46 +1,121 @@
-# Getting Started with Create React App
+# Human Genetic Ancestry Visualization
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+An interactive visualization tool for exploring the geographic history of human genetic ancestry, based on the research paper "A geographic history of human genetic ancestry" by Grundler et al. (2024).
 
-## Available Scripts
+## Overview
 
-In the project directory, you can run:
+This application provides an interactive map interface for visualizing the movement and distribution of human genetic ancestry across Eurasia and Africa. It features:
 
-### `npm start`
+- Interactive map visualization using DeckGL and Mapbox
+- Geographic visualization of genetic data points
+- Hexagonal geographic grid overlay
+- Hover tooltips with detailed node information
+- Resizable side panels for additional data and controls
+- Support for point selection and detailed information display
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Technical Stack
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- React
+- DeckGL for WebGL-powered data visualization
+- Mapbox GL JS for base map rendering
+- TypeScript for type safety
+- Tailwind CSS for styling
+- shadcn/ui for UI components
 
-### `npm test`
+## Prerequisites
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- Node.js (v16 or higher)
+- npm or yarn
+- Mapbox API token
+- Access to genetic data files:
+    - `landgrid_wgs84.geojson` - Hexagonal grid data
+    - `coords_wgs84.json` - Point coordinate data
 
-### `npm run build`
+## Environment Setup
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+1. Clone the repository
+2. Create a `.env` file in the root directory with your Mapbox token:
+```
+REACT_APP_MAPBOX_TOKEN=your_mapbox_token_here
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Installation
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```bash
+# Install dependencies
+npm install
 
-### `npm run eject`
+# Start development server
+npm start
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## Data Structure
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+The application expects two main data files:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+### Point Data (`coords_wgs84.json`)
+```typescript
+interface PointData {
+  node_id: string;
+  latitude: number;
+  longitude: number;
+}
+```
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+### Hexagon Grid Data (`landgrid_wgs84.geojson`)
+GeoJSON file containing the hexagonal grid overlay for the map.
 
-## Learn More
+## Core Components
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### EurasiaMap
+The main map component handling the visualization of geographic data. Features:
+- Interactive map controls (pan, zoom, rotate)
+- Multiple visualization layers (hexagons and points)
+- Hover interactions
+- Point selection
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### App
+The root component managing:
+- State management for selected points
+- Sidebar controls and resizing
+- Layout and component organization
+
+## Features
+
+1. **Interactive Map**
+    - Pan, zoom, and rotate controls
+    - Point selection
+    - Hover tooltips
+
+2. **Data Visualization**
+    - Geographic point distribution
+    - Hexagonal grid overlay
+    - Color-coded data representation
+
+3. **UI Controls**
+    - Resizable sidebars
+    - Detailed point information
+    - Map statistics
+
+## Contributing
+
+1. Fork the repository
+2. Create a feature branch
+3. Commit your changes
+4. Push to the branch
+5. Open a Pull Request
+
+## License
+
+Research and code released under CC-BY 4.0 International license.
+
+## Citation
+
+If you use this visualization in your research, please cite:
+```
+Grundler, M. C., Terhorst, J., & Bradburd, G. S. (2024). A geographic history of human genetic ancestry. bioRxiv.
+```
+
+## Acknowledgments
+
+This project is based on research conducted at the University of Michigan, Department of Ecology and Evolutionary Biology and Department of Statistics.
