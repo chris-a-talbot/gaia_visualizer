@@ -12664,7 +12664,7 @@
       "type": "Feature",
       "properties": {
         "state_id": 171,
-        "continent_id": "EU"
+        "continent_id": "AS_N"
       },
       "geometry": {
         "type": "MultiPolygon",

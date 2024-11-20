@@ -7,6 +7,7 @@ import zipfile
 import io
 import os
 
+# Note: Cell with state ID 171 is the Eastern tip of Russia, and was manually reclassified to AS_N from EU
 
 def download_natural_earth_data():
     """
