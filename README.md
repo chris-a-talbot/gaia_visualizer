@@ -94,7 +94,3 @@ If you use this visualization in your research, please cite:
 ```
 Grundler, M. C., Terhorst, J., & Bradburd, G. S. (2024). A geographic history of human genetic ancestry. bioRxiv.
 ```
-
-## Acknowledgments
-
-This project is based on research conducted at the University of Michigan, Department of Ecology and Evolutionary Biology and Department of Statistics.
