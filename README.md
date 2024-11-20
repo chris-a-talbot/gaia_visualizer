@@ -1,17 +1,10 @@
 # Human Genetic Ancestry Visualization
 
-An interactive visualization tool for exploring the geographic history of human genetic ancestry, based on the research paper "A geographic history of human genetic ancestry" by Grundler et al. (2024).
+An interactive visualization tool for exploring the geographic history of human genetic ancestry, based on *gaia* by Grundler et al. (2024).
 
 ## Overview
 
-This application provides an interactive map interface for visualizing the movement and distribution of human genetic ancestry across Eurasia and Africa. It features:
-
-- Interactive map visualization using DeckGL and Mapbox
-- Geographic visualization of genetic data points
-- Hexagonal geographic grid overlay
-- Hover tooltips with detailed node information
-- Resizable side panels for additional data and controls
-- Support for point selection and detailed information display
+This application provides an interactive map interface for visualizing the movement and distribution of human genetic ancestry across Eurasia and Africa. 
 
 ## Technical Stack
 
@@ -65,20 +58,6 @@ interface PointData {
 ### Hexagon Grid Data (`landgrid_wgs84.geojson`)
 GeoJSON file containing the hexagonal grid overlay for the map.
 
-## Core Components
-
-### EurasiaMap
-The main map component handling the visualization of geographic data. Features:
-- Interactive map controls (pan, zoom, rotate)
-- Multiple visualization layers (hexagons and points)
-- Hover interactions
-- Point selection
-
-### App
-The root component managing:
-- State management for selected points
-- Sidebar controls and resizing
-- Layout and component organization
 
 ## Features
 
