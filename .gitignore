@@ -36,7 +36,7 @@ yarn-error.log*
 src/data/landgrid.gpkg
 src/data/land.gpkg
 src/data/landgrid.gpkg
-src/data/results_2/mpr-chr18p.rds
+src/data/mpr-chr18p.rds
 /src/data/results_1
 /src/data/results_2
 src/data/hgdp_tgp_sgdp_high_cov_ancients_chr18_p.dated.trees
