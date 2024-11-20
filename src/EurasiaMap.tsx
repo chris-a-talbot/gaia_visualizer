@@ -1,6 +1,6 @@
 // EurasiaMap.tsx
 // Import datasets
-import hexagonData from './data/unused/landgrid_wgs84.geojson';
+import hexagonData from './data/landgrid_wgs84_metadata.geojson';
 import pointData from './data/coords_wgs84.json';
 
 // Import types
