@@ -2,12 +2,7 @@
 import React, { useState, useCallback } from 'react';
 import EurasiaMap from './EurasiaMap';
 import './sidebar.css';
-
-interface PointData {
-    node_id: string;
-    latitude: number;
-    longitude: number;
-}
+import { PointData } from "./types";
 
 const DEFAULT_SIDEBAR_WIDTH = 320;
 const MIN_SIDEBAR_WIDTH = 200;
@@ -23,8 +18,13 @@ const App = () => {
 
     const handlePointClick = (point: PointData) => {
         console.log('Point clicked:', point);
-        setSelectedPoint(point);
-        setShowLeftSidebar(true);
+        if (selectedPoint && selectedPoint.node_id === point.node_id) {
+            setSelectedPoint(null);
+            setShowLeftSidebar(false);
+        } else {
+            setSelectedPoint(point);
+            setShowLeftSidebar(true);
+        }
     };
 
     const startResizing = useCallback((side: 'left' | 'right') => {
@@ -51,6 +51,7 @@ const App = () => {
     }, []);
 
     return (
+        // App container
         <div style={{
             width: '100vw',
             height: '100vh',
@@ -58,11 +59,13 @@ const App = () => {
             overflow: 'hidden',
             cursor: isResizing ? 'ew-resize' : 'default'
         }}>
+            {/* Map */}
             <div style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0 }}>
                 <EurasiaMap selectedPoint={selectedPoint} onPointClick={handlePointClick} />
             </div>
 
             {/* Left Sidebar */}
+            {selectedPoint && (
             <div
                 className={`sidebar left ${showLeftSidebar ? 'open' : 'closed'}`}
                 style={{
@@ -101,6 +104,7 @@ const App = () => {
                     onMouseDown={() => startResizing('left')}
                 />
             </div>
+            )}
 
             {/* Right Sidebar */}
             <div

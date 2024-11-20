@@ -9,6 +9,7 @@ import React, {useMemo, useState} from "react";
 import {GeoJsonLayer, ScatterplotLayer} from "@deck.gl/layers";
 import DeckGL from "@deck.gl/react";
 import {Map} from "react-map-gl";
+import {HoverInfo} from "./types";
 
 // Set up Mapbox for base map
 const MAPBOX_ACCESS_TOKEN = process.env.REACT_APP_MAPBOX_TOKEN;
@@ -40,7 +41,7 @@ const EurasiaMap: React.FC<EurasiaMapProps> = ({ selectedPoint, onPointClick }) 
     const [viewState, setViewState] = useState<MapViewState>(INITIAL_VIEW_STATE);
 
     // State for hover info
-    const [hoverInfo, setHoverInfo] = useState<{x: number; y: number; object: any} | null>(null);
+    const [hoverInfo, setHoverInfo] = useState<HoverInfo | null>(null);
 
     const layers = useMemo(() => [
         // Hexagon polygon layer

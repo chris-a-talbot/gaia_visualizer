@@ -1,4 +1,4 @@
 declare module '*.geojson' {
-    const content: GeoJSON.FeatureCollection;
-    export default content;
+    const value: any;
+    export default value;
 }
