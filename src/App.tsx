@@ -1,8 +1,18 @@
-// App.tsx
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 import EurasiaMap from './EurasiaMap';
 import './sidebar.css';
 import { PointData } from "./types";
+
+interface MigrationFlow {
+    source_id: string;
+    target_id: string;
+    value: number;
+}
+
+interface MigrationData {
+    time_series: MigrationFlow[][];
+    average_flux: MigrationFlow[];
+}
 
 const DEFAULT_SIDEBAR_WIDTH = 320;
 const MIN_SIDEBAR_WIDTH = 200;
@@ -15,6 +25,19 @@ const App = () => {
     const [leftSidebarWidth, setLeftSidebarWidth] = useState(DEFAULT_SIDEBAR_WIDTH);
     const [rightSidebarWidth, setRightSidebarWidth] = useState(DEFAULT_SIDEBAR_WIDTH);
     const [isResizing, setIsResizing] = useState(false);
+    const [migrationData, setMigrationData] = useState<MigrationData | null>(null);
+
+    // Load migration data
+    useEffect(() => {
+        fetch('/migration_data.json')
+            .then(response => response.json())
+            .then((data: MigrationData) => {
+                setMigrationData(data);
+            })
+            .catch(error => {
+                console.error('Error loading migration data:', error);
+            });
+    }, []);
 
     const handlePointClick = (point: PointData) => {
         console.log('Point clicked:', point);
@@ -51,7 +74,6 @@ const App = () => {
     }, []);
 
     return (
-        // App container
         <div style={{
             width: '100vw',
             height: '100vh',
@@ -61,49 +83,53 @@ const App = () => {
         }}>
             {/* Map */}
             <div style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0 }}>
-                <EurasiaMap selectedPoint={selectedPoint} onPointClick={handlePointClick} />
+                <EurasiaMap
+                    selectedPoint={selectedPoint}
+                    onPointClick={handlePointClick}
+                    averageMigrationFlows={migrationData?.average_flux ?? []}
+                />
             </div>
 
             {/* Left Sidebar */}
             {selectedPoint && (
-            <div
-                className={`sidebar left ${showLeftSidebar ? 'open' : 'closed'}`}
-                style={{
-                    zIndex: 10,
-                    width: leftSidebarWidth,
-                    minWidth: leftSidebarWidth,
-                }}
-            >
-                <button
-                    className="toggle-button"
-                    onClick={() => setShowLeftSidebar(!showLeftSidebar)}
-                >
-                    {showLeftSidebar ? '←' : '→'}
-                </button>
-
-                <div className="sidebar-content">
-                    <h2>Point Details {selectedPoint && `(${selectedPoint.node_id})`}</h2>
-
-                    <div className="info-panel">
-                        <h3>Location</h3>
-                        <p>Node ID: {selectedPoint?.node_id || 'N/A'}</p>
-                        <p>Latitude: {selectedPoint?.latitude?.toFixed(4)}°N</p>
-                        <p>Longitude: {selectedPoint?.longitude?.toFixed(4)}°E</p>
-                    </div>
-
-                    <div className="info-panel">
-                        <h3>Measurements</h3>
-                        <p>Temperature: 23.5°C</p>
-                        <p>Pressure: 1013 hPa</p>
-                        <p>Humidity: 65%</p>
-                    </div>
-                </div>
-
                 <div
-                    className="resize-handle right"
-                    onMouseDown={() => startResizing('left')}
-                />
-            </div>
+                    className={`sidebar left ${showLeftSidebar ? 'open' : 'closed'}`}
+                    style={{
+                        zIndex: 10,
+                        width: leftSidebarWidth,
+                        minWidth: leftSidebarWidth,
+                    }}
+                >
+                    <button
+                        className="toggle-button"
+                        onClick={() => setShowLeftSidebar(!showLeftSidebar)}
+                    >
+                        {showLeftSidebar ? '←' : '→'}
+                    </button>
+
+                    <div className="sidebar-content">
+                        <h2>Point Details {selectedPoint && `(${selectedPoint.node_id})`}</h2>
+
+                        <div className="info-panel">
+                            <h3>Location</h3>
+                            <p>Node ID: {selectedPoint?.node_id || 'N/A'}</p>
+                            <p>Latitude: {selectedPoint?.latitude?.toFixed(4)}°N</p>
+                            <p>Longitude: {selectedPoint?.longitude?.toFixed(4)}°E</p>
+                        </div>
+
+                        <div className="info-panel">
+                            <h3>Measurements</h3>
+                            <p>Temperature: 23.5°C</p>
+                            <p>Pressure: 1013 hPa</p>
+                            <p>Humidity: 65%</p>
+                        </div>
+                    </div>
+
+                    <div
+                        className="resize-handle right"
+                        onMouseDown={() => startResizing('left')}
+                    />
+                </div>
             )}
 
             {/* Right Sidebar */}
@@ -129,6 +155,7 @@ const App = () => {
                         <h3>Statistics</h3>
                         <p>Total Points: 1,234</p>
                         <p>Active Regions: 56</p>
+                        <p>Total Migration Flows: {migrationData?.average_flux.length ?? 0}</p>
                     </div>
                 </div>
 

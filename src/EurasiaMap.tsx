@@ -2,20 +2,41 @@
 import hexagonData from './data/landgrid_wgs84_metadata.geojson';
 import pointData from './data/coords_wgs84.json';
 
-import {COORDINATE_SYSTEM, MapView, MapViewState} from "@deck.gl/core";
+import {ArcLayer} from '@deck.gl/layers';
+import {COORDINATE_SYSTEM, MapView, MapViewState, Layer} from "@deck.gl/core";
 import type {ProjectionSpecification} from "mapbox-gl";
-import React, {useMemo, useState} from "react";
+import React, {useMemo, useState, useEffect} from "react";
 import {GeoJsonLayer, ScatterplotLayer} from "@deck.gl/layers";
 import DeckGL from "@deck.gl/react";
 import {Map} from "react-map-gl";
+import * as turf from '@turf/turf';
+import { Feature, Geometry } from 'geojson';
 import {HoverInfo} from "./types";
 
 const MAPBOX_ACCESS_TOKEN = process.env.REACT_APP_MAPBOX_TOKEN;
 const MAPBOX_STYLE = 'mapbox://styles/mapbox/dark-v11';
 
+interface HexagonProperties {
+    state_id: string;
+    continent_id: string;
+}
+
+// Add interfaces for migration data
+interface MigrationFlow {
+    source_id: string;
+    target_id: string;
+    value: number;
+}
+
+interface FlowWithCoordinates extends MigrationFlow {
+    source_coordinates: [number, number];
+    target_coordinates: [number, number];
+}
+
 interface EurasiaMapProps {
     selectedPoint: { node_id: string; latitude: number; longitude: number } | null;
     onPointClick: (point: any) => void;
+    averageMigrationFlows?: MigrationFlow[];
 }
 
 // Add new interface for hexagon hover info
@@ -44,7 +65,8 @@ const MAP_PROJECTION: ProjectionSpecification = {
 };
 
 // Color mapping function for continents
-const getContinentColor = (continentId: string): [number, number, number, number] => {
+const getContinentColor = (feature: Feature<Geometry>): [number, number, number, number] => {
+    const continentId = feature.properties?.continent_id;
     switch (continentId) {
         case 'EU':
             return [65, 105, 225, 40];  // Royal Blue
@@ -63,61 +85,155 @@ const getContinentColor = (continentId: string): [number, number, number, number
     }
 };
 
-const EurasiaMap: React.FC<EurasiaMapProps> = ({ selectedPoint, onPointClick }) => {
+const EurasiaMap: React.FC<EurasiaMapProps> = ({
+                                                   selectedPoint,
+                                                   onPointClick,
+                                                   averageMigrationFlows = []
+                                               }) => {
     const [viewState, setViewState] = useState<MapViewState>(INITIAL_VIEW_STATE);
     const [pointHoverInfo, setPointHoverInfo] = useState<HoverInfo | null>(null);
     const [hexagonHoverInfo, setHexagonHoverInfo] = useState<HexagonHoverInfo | null>(null);
+    const [flowHoverInfo, setFlowHoverInfo] = useState<FlowWithCoordinates | null>(null);
+    const [showMigration, setShowMigration] = useState(false);
 
-    const layers = useMemo(() => [
-        new GeoJsonLayer({
-            id: 'hexagon-layer',
-            data: hexagonData,
-            filled: true,
-            stroked: true,
-            getFillColor: f => getContinentColor(f.properties.continent_id),
-            getLineColor: [0, 240, 0, 75],
-            lineWidthMinPixels: 1,
-            coordinateSystem: COORDINATE_SYSTEM.LNGLAT,
-            wrapLongitude: true,
-            pickable: true,
-            onHover: ({object, x, y}) => {
-                setHexagonHoverInfo(object ? {object, x, y} : null);
-            }
-        }),
-        new ScatterplotLayer({
-            id: 'point-layer',
-            data: pointData,
-            pickable: true,
-            opacity: 0.9,
-            stroked: true,
-            filled: true,
-            radiusMinPixels: 8,
-            getPosition: d => [d.longitude, d.latitude],
-            getFillColor: [255, 0, 255],
-            getLineColor: [0, 0, 0, 100],
-            lineWidthMinPixels: 1.5,
-            parameters: { depthTest: false },
-            onClick: ({object, x, y}) => {
-                if (object) {
-                    onPointClick(object);
+    // Modified centroidLookup creation with debug logging
+    const centroidLookup = useMemo(() => {
+        const lookup: { [key: string]: [number, number] } = {};
+        if (hexagonData && hexagonData.features) {
+            console.log('Processing hexagon features:', hexagonData.features.length);
+            hexagonData.features.forEach((feature: Feature<Geometry>) => {
+                if (feature.geometry && feature.properties?.state_id) {
+                    const centroid = turf.centroid(feature);
+                    lookup[feature.properties.state_id] = [
+                        centroid.geometry.coordinates[0],
+                        centroid.geometry.coordinates[1]
+                    ];
                 }
-            },
-            onHover: ({object, x, y}) => {
-                setPointHoverInfo(object ? {object, x, y} : null);
+            });
+        }
+        return lookup;
+    }, [hexagonData]);
+
+    useEffect(() => {
+        console.log('Migration Flows:', averageMigrationFlows);
+        console.log('Centroid Lookup:', centroidLookup);
+    }, [averageMigrationFlows, centroidLookup]);
+
+    // Modified flows calculation with debug logging
+    const flowsWithCoordinates = useMemo(() => {
+        console.log('Processing flows:', averageMigrationFlows.length);
+
+        const flows = averageMigrationFlows.map(flow => {
+            const sourceCoords = centroidLookup[flow.source_id];
+            const targetCoords = centroidLookup[flow.target_id];
+
+            if (!sourceCoords) {
+                console.warn(`Missing source coordinates for ID: ${flow.source_id}`);
             }
-        }),
-    ], [onPointClick]);
+            if (!targetCoords) {
+                console.warn(`Missing target coordinates for ID: ${flow.target_id}`);
+            }
+
+            return {
+                ...flow,
+                source_coordinates: sourceCoords,
+                target_coordinates: targetCoords
+            };
+        }).filter((flow): flow is FlowWithCoordinates => {
+            const valid = !!flow.source_coordinates && !!flow.target_coordinates;
+            if (!valid) {
+                console.warn('Filtered out flow:', flow);
+            }
+            return valid;
+        });
+
+        console.log('Valid flows after processing:', flows.length);
+        return flows;
+    }, [averageMigrationFlows, centroidLookup]);
+
+    const layers = useMemo(() => {
+        const baseLayers: Layer[] = [
+            new GeoJsonLayer({
+                id: 'hexagon-layer',
+                data: hexagonData,
+                filled: true,
+                stroked: true,
+                getFillColor: getContinentColor,
+                getLineColor: [0, 240, 0, 75],
+                lineWidthMinPixels: 1,
+                coordinateSystem: COORDINATE_SYSTEM.LNGLAT,
+                wrapLongitude: true,
+                pickable: true,
+                onHover: ({object, x, y}) => {
+                    setHexagonHoverInfo(object ? {object, x, y} : null);
+                }
+            }),
+            new ScatterplotLayer({
+                id: 'point-layer',
+                data: pointData,
+                pickable: true,
+                opacity: 0.9,
+                stroked: true,
+                filled: true,
+                radiusMinPixels: 8,
+                getPosition: (d: { longitude: any; latitude: any; }) => [d.longitude, d.latitude],
+                getFillColor: [255, 0, 255],
+                getLineColor: [0, 0, 0, 100],
+                lineWidthMinPixels: 1.5,
+                onClick: ({object}) => {
+                    if (object) {
+                        onPointClick(object);
+                    }
+                },
+                onHover: ({object, x, y}) => {
+                    setPointHoverInfo(object ? {object, x, y} : null);
+                }
+            })
+        ];
+
+        // Only add migration layer if toggle is on
+        if (showMigration) {
+            console.log('Attempting to show migration with flows:', flowsWithCoordinates.length);
+
+            if (flowsWithCoordinates.length === 0) {
+                console.warn('No valid flows to display');
+            } else {
+                baseLayers.push(
+                    new ArcLayer<FlowWithCoordinates>({
+                        id: 'migration-flow-layer',
+                        data: flowsWithCoordinates,
+                        pickable: true,
+                        getSourcePosition: d => d.source_coordinates,
+                        getTargetPosition: d => d.target_coordinates,
+                        getSourceColor: [255, 0, 128],
+                        getTargetColor: [0, 128, 255],
+                        getWidth: d => Math.sqrt(d.value) * 2,
+                        getHeight: 0.5,
+                        greatCircle: true,
+                        wrapLongitude: true,
+                        opacity: 0.8,
+                        onHover: ({object}) => {
+                            setFlowHoverInfo(object || null);
+                        }
+                    })
+                );
+            }
+        }
+
+        return baseLayers;
+    }, [onPointClick, showMigration, flowsWithCoordinates]);
+
 
     const renderTooltip = () => {
-        if (pointHoverInfo) {
+        if (flowHoverInfo) {
             return (
                 <div
                     style={{
                         position: 'absolute',
                         zIndex: 1,
                         pointerEvents: 'none',
-                        left: pointHoverInfo.x,
-                        top: pointHoverInfo.y,
+                        left: pointHoverInfo?.x || 0,
+                        top: pointHoverInfo?.y || 0,
                         backgroundColor: 'rgba(0, 0, 0, 0.8)',
                         padding: '8px',
                         borderRadius: '4px',
@@ -127,9 +243,9 @@ const EurasiaMap: React.FC<EurasiaMapProps> = ({ selectedPoint, onPointClick }) 
                         marginTop: '-20px'
                     }}
                 >
-                    <div>Node ID: {pointHoverInfo.object.node_id}</div>
-                    <div>Lat: {pointHoverInfo.object.latitude.toFixed(4)}°</div>
-                    <div>Lon: {pointHoverInfo.object.longitude.toFixed(4)}°</div>
+                    <div>From State: {flowHoverInfo.source_id}</div>
+                    <div>To State: {flowHoverInfo.target_id}</div>
+                    <div>Average Migration: {flowHoverInfo.value.toFixed(2)}</div>
                 </div>
             );
         }
@@ -162,11 +278,37 @@ const EurasiaMap: React.FC<EurasiaMapProps> = ({ selectedPoint, onPointClick }) 
     };
 
     return (
-        <div>
+        <div className="relative">
+            <button
+                onClick={() => setShowMigration(!showMigration)}
+                style={{
+                    position: 'absolute',
+                    top: '1rem',
+                    right: '1rem',
+                    zIndex: 10,
+                    padding: '0.5rem 1rem',
+                    backgroundColor: showMigration ? '#2563eb' : '#4b5563',
+                    color: 'white',
+                    border: 'none',
+                    borderRadius: '0.375rem',
+                    cursor: 'pointer',
+                    fontSize: '0.875rem',
+                    fontWeight: 500,
+                    transition: 'background-color 0.2s',
+                }}
+                onMouseEnter={e => {
+                    e.currentTarget.style.backgroundColor = showMigration ? '#1d4ed8' : '#374151';
+                }}
+                onMouseLeave={e => {
+                    e.currentTarget.style.backgroundColor = showMigration ? '#2563eb' : '#4b5563';
+                }}
+            >
+                {showMigration ? 'Hide Migration' : 'Show Migration'}
+            </button>
             <DeckGL
                 initialViewState={INITIAL_VIEW_STATE}
                 viewState={viewState}
-                onViewStateChange={({ viewState: newViewState }) => {
+                onViewStateChange={({viewState: newViewState}) => {
                     const safeViewState: MapViewState = {
                         longitude: newViewState.longitude ?? viewState.longitude,
                         latitude: newViewState.latitude ?? viewState.latitude,
@@ -178,9 +320,9 @@ const EurasiaMap: React.FC<EurasiaMapProps> = ({ selectedPoint, onPointClick }) 
                 }}
                 controller={true}
                 layers={layers}
-                views={new MapView({ repeat: true })}
+                views={new MapView({repeat: true})}
                 getCursor={({isDragging}) =>
-                    isDragging ? 'grabbing' : ((pointHoverInfo || hexagonHoverInfo) ? 'pointer' : 'grab')
+                    isDragging ? 'grabbing' : ((pointHoverInfo || hexagonHoverInfo || flowHoverInfo) ? 'pointer' : 'grab')
                 }
             >
                 <Map
