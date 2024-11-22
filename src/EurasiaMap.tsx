@@ -12,14 +12,14 @@
 import React, { useEffect, useMemo, useState } from "react";
 import DeckGL from "@deck.gl/react";
 import { Map } from "react-map-gl";
-import { GeoJsonLayer, ScatterplotLayer } from "@deck.gl/layers";
-import { COORDINATE_SYSTEM, MapView, MapViewState } from "@deck.gl/core";
+import {ArcLayer, GeoJsonLayer, ScatterplotLayer} from "@deck.gl/layers";
+import { COORDINATE_SYSTEM, MapView, MapViewState, Layer } from "@deck.gl/core";
 import type { ProjectionSpecification } from "mapbox-gl";
 import {
     GeoJsonData,
     PointData,
     PointHoverInfo,
-    HexagonHoverInfo
+    HexagonHoverInfo, HexagonProperties
 } from './types';
 import { Feature, Geometry } from "geojson";
 
@@ -29,15 +29,70 @@ import { Feature, Geometry } from "geojson";
 // ============================================================================
 import hexagonDataPath from './data/landgrid_wgs84_metadata.geojson';
 import pointData from './data/coords_wgs84.json';
+import fluxData from './data/flux.json';
 
 // ============================================================================
 // Types and Interfaces
 // Define component props and type constraints
 // ============================================================================
 interface EurasiaMapProps {
-    selectedPoint: PointData | null;        // Currently selected point on map
-    onPointClick: (point: PointData) => void; // Callback for point selection
+    selectedPoint: PointData | null;
+    onPointClick: (point: PointData) => void;
+    showArcs: boolean;
 }
+
+interface ArcData {
+    source: [number, number];
+    target: [number, number];
+    weight: number;
+}
+
+// Type guard to check if a feature has valid properties
+const hasValidProperties = (feature: Feature<Geometry>): feature is Feature<Geometry> & {
+    properties: HexagonProperties
+} => {
+    return feature.properties !== null &&
+        'centerpoint' in feature.properties &&
+        feature.properties.centerpoint !== null &&
+        'longitude' in feature.properties.centerpoint &&
+        'latitude' in feature.properties.centerpoint;
+};
+
+const generateRandomArcs = (hexagonData: GeoJsonData, count: number = 50): ArcData[] => {
+    const features = hexagonData.features;
+    const arcs: ArcData[] = [];
+
+    // Filter features to only include those with valid properties
+    const validFeatures = features.filter(hasValidProperties);
+
+    if (validFeatures.length < 2) {
+        console.error('Not enough valid features to generate arcs');
+        return [];
+    }
+
+    for (let i = 0; i < count; i++) {
+        const sourceFeature = validFeatures[Math.floor(Math.random() * validFeatures.length)];
+        const targetFeature = validFeatures[Math.floor(Math.random() * validFeatures.length)];
+
+        // No need for null checks here since we filtered the features
+        const sourcePoint = sourceFeature.properties.centerpoint;
+        const targetPoint = targetFeature.properties.centerpoint;
+
+        arcs.push({
+            source: [sourcePoint.longitude, sourcePoint.latitude],
+            target: [targetPoint.longitude, targetPoint.latitude],
+            weight: Math.random() * 10
+        });
+    }
+
+    return arcs;
+};
+
+const getArcColor = (weight: number): [number, number, number] => {
+    const r = Math.min(255, 255 * (0.5 + weight / 10));
+    const g = Math.max(0, 255 * (1 - weight / 10));
+    return [r, g, 0];
+};
 
 // ============================================================================
 // Constants
@@ -96,29 +151,22 @@ const getContinentColor = (feature: Feature<Geometry>): [number, number, number,
 const EurasiaMap: React.FC<EurasiaMapProps> = ({
                                                    selectedPoint,
                                                    onPointClick,
+                                                   showArcs,
                                                }) => {
-    // ========================================================================
-    // State Management
-    // ========================================================================
-    // Map view state for controlling camera position
     const [viewState, setViewState] = useState<MapViewState>(INITIAL_VIEW_STATE);
-    // Hover states for tooltips
     const [pointHoverInfo, setPointHoverInfo] = useState<PointHoverInfo | null>(null);
     const [hexagonHoverInfo, setHexagonHoverInfo] = useState<HexagonHoverInfo | null>(null);
-    // Geographic data state
     const [hexagonData, setHexagonData] = useState<GeoJsonData | null>(null);
     const [isLoading, setIsLoading] = useState(true);
+    const [arcData, setArcData] = useState<ArcData[]>([]);
 
-    // ========================================================================
-    // Data Loading
-    // ========================================================================
     useEffect(() => {
-        // Async function to load hexagon geometry data
         const loadHexagonData = async () => {
             try {
                 const response = await fetch(hexagonDataPath);
                 const data = await response.json();
                 setHexagonData(data);
+                setArcData(generateRandomArcs(data));
             } catch (error) {
                 console.error('Error loading hexagon data:', error);
             } finally {
@@ -127,36 +175,30 @@ const EurasiaMap: React.FC<EurasiaMapProps> = ({
         };
 
         loadHexagonData();
-    }, []); // Empty dependency array means this runs once on mount
+    }, []);
 
-    // ========================================================================
-    // Layer Configuration
-    // ========================================================================
-    // Memoized layer definitions to prevent unnecessary recalculation
     const layers = useMemo(() => {
         if (!hexagonData) {
             return [];
         }
 
-        return [
-            // Base layer for hexagonal regions
+        const layers: Layer[] = [
             new GeoJsonLayer({
                 id: 'hexagon-layer',
                 data: hexagonData,
                 filled: true,
                 stroked: true,
                 getFillColor: getContinentColor,
-                getLineColor: [0, 240, 0, 75],  // Green borders
+                getLineColor: [0, 240, 0, 75],
                 lineWidthMinPixels: 1,
                 coordinateSystem: COORDINATE_SYSTEM.LNGLAT,
                 wrapLongitude: true,
-                pickable: true,  // Enable hover interactions
+                pickable: true,
                 onHover: ({object, x, y}) => {
                     setHexagonHoverInfo(object ? {object, x, y} : null);
                 }
-            }),
+            }) as Layer,
 
-            // Point layer for individual locations
             new ScatterplotLayer({
                 id: 'point-layer',
                 data: pointData as PointData[],
@@ -166,8 +208,8 @@ const EurasiaMap: React.FC<EurasiaMapProps> = ({
                 filled: true,
                 radiusMinPixels: 8,
                 getPosition: (d: PointData) => [d.longitude, d.latitude],
-                getFillColor: [255, 0, 255],  // Magenta points
-                getLineColor: [0, 0, 0, 100], // Black borders
+                getFillColor: [255, 0, 255],
+                getLineColor: [0, 0, 0, 100],
                 lineWidthMinPixels: 1.5,
                 onClick: ({object}) => {
                     if (object) {
@@ -177,20 +219,29 @@ const EurasiaMap: React.FC<EurasiaMapProps> = ({
                 onHover: ({object, x, y}) => {
                     setPointHoverInfo(object ? {object, x, y} : null);
                 }
-            }),
+            }) as Layer
         ];
-    }, [hexagonData, onPointClick]);
 
-    // Show loading state while data is being fetched
-    if (isLoading) {
-        return <div>Loading map data...</div>;
-    }
+        if (showArcs) {
+            layers.push(
+                new ArcLayer({
+                    id: 'arc-layer',
+                    data: arcData,
+                    pickable: true,
+                    getSourcePosition: d => d.source,
+                    getTargetPosition: d => d.target,
+                    getSourceColor: d => getArcColor(d.weight),
+                    getTargetColor: d => getArcColor(d.weight),
+                    getWidth: d => 1 + d.weight * 2,
+                    greatCircle: true
+                }) as Layer
+            );
+        }
 
-    // ========================================================================
-    // Tooltip Rendering
-    // ========================================================================
+        return layers;
+    }, [hexagonData, onPointClick, showArcs, arcData]);
+
     const renderTooltip = () => {
-        // Common tooltip styles
         const tooltipStyle = {
             position: 'absolute' as const,
             zIndex: 1,
@@ -204,8 +255,8 @@ const EurasiaMap: React.FC<EurasiaMapProps> = ({
             marginTop: '-20px'
         };
 
-        // Render hexagon region tooltip
         if (hexagonHoverInfo) {
+            const { state_id, continent_id, centerpoint } = hexagonHoverInfo.object.properties;
             return (
                 <div
                     style={{
@@ -214,13 +265,13 @@ const EurasiaMap: React.FC<EurasiaMapProps> = ({
                         top: hexagonHoverInfo.y,
                     }}
                 >
-                    <div>State ID: {hexagonHoverInfo.object.properties.state_id}</div>
-                    <div>Continent: {hexagonHoverInfo.object.properties.continent_id}</div>
+                    <div>State ID: {state_id}</div>
+                    <div>Continent: {continent_id}</div>
+                    <div>Center: ({centerpoint.longitude.toFixed(4)}, {centerpoint.latitude.toFixed(4)})</div>
                 </div>
             );
         }
 
-        // Render point tooltip
         if (pointHoverInfo) {
             return (
                 <div
@@ -232,22 +283,22 @@ const EurasiaMap: React.FC<EurasiaMapProps> = ({
                 >
                     <div>Node ID: {pointHoverInfo.object.node_id}</div>
                 </div>
-            )
+            );
         }
 
         return null;
     };
 
-    // ========================================================================
-    // Component Render
-    // ========================================================================
+    if (isLoading) {
+        return <div>Loading map data...</div>;
+    }
+
     return (
         <div className="relative">
             <DeckGL
                 initialViewState={INITIAL_VIEW_STATE}
                 viewState={viewState}
                 onViewStateChange={({viewState: newViewState}) => {
-                    // Safely update view state with fallbacks to current values
                     const safeViewState: MapViewState = {
                         longitude: newViewState.longitude ?? viewState.longitude,
                         latitude: newViewState.latitude ?? viewState.latitude,
@@ -257,27 +308,22 @@ const EurasiaMap: React.FC<EurasiaMapProps> = ({
                     };
                     setViewState(safeViewState);
                 }}
-                controller={true}  // Enable map interaction
+                controller={true}
                 layers={layers}
                 views={new MapView({repeat: true})}
                 getCursor={({isDragging}) =>
                     isDragging ? 'grabbing' : ((pointHoverInfo || hexagonHoverInfo) ? 'pointer' : 'grab')
                 }
             >
-                {/* Base map layer */}
                 <Map
                     mapboxAccessToken={MAPBOX_ACCESS_TOKEN}
                     mapStyle={MAPBOX_STYLE}
                     projection={MAP_PROJECTION}
                 />
-                {/* Render any active tooltips */}
                 {renderTooltip()}
             </DeckGL>
         </div>
     );
 };
 
-// ============================================================================
-// Export Component
-// ============================================================================
 export default EurasiaMap;

@@ -51,6 +51,8 @@ const App = () => {
     // Tracks whether user is currently dragging a sidebar resize handle
     const [isResizing, setIsResizing] = useState(false);
 
+    const [showArcs, setShowArcs] = useState(false);
+
     // ========================================================================
     // Event Handlers
     // Callbacks for user interactions
@@ -123,10 +125,11 @@ const App = () => {
                 Map Section
                 Absolute positioning fills the entire viewport
                 ---------------------------------------------------------------- */}
-            <div style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0 }}>
+            <div style={{position: 'absolute', top: 0, left: 0, right: 0, bottom: 0}}>
                 <EurasiaMap
                     selectedPoint={selectedPoint}
                     onPointClick={handlePointClick}
+                    showArcs={showArcs}
                 />
             </div>
 
@@ -194,7 +197,6 @@ const App = () => {
                     minWidth: rightSidebarWidth,
                 }}
             >
-                {/* Toggle Button - Controls sidebar visibility */}
                 <button
                     className="toggle-button"
                     onClick={() => setShowRightSidebar(!showRightSidebar)}
@@ -202,15 +204,29 @@ const App = () => {
                     {showRightSidebar ? '→' : '←'}
                 </button>
 
-                {/* Sidebar Content */}
                 <div className="sidebar-content">
                     <h2>Map Information</h2>
 
-                    {/* Statistics Panel - Displays map metrics */}
                     <div className="info-panel">
                         <h3>Statistics</h3>
                         <p>Total Points: 2,139</p>
                         <p>Total Hexcells: 177</p>
+                    </div>
+
+                    {/* New visualization controls panel */}
+                    <div className="info-panel">
+                        <h3>Visualization</h3>
+                        <div className="control-row">
+                            <label className="toggle-label">
+                                Show Connection Arcs
+                                <input
+                                    type="checkbox"
+                                    checked={showArcs}
+                                    onChange={(e) => setShowArcs(e.target.checked)}
+                                />
+                                <span className="toggle-slider"></span>
+                            </label>
+                        </div>
                     </div>
                 </div>
 

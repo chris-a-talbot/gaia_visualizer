@@ -1,4 +1,3 @@
-// types.ts
 import { Feature, FeatureCollection } from 'geojson';
 
 export interface GeoJsonData extends FeatureCollection {
@@ -33,11 +32,21 @@ export interface PointHoverInfo extends HoverInfo {
     object: PointData;
 }
 
+// Define centerpoint structure
+export interface Centerpoint {
+    longitude: number;
+    latitude: number;
+}
+
+// Update hexagon properties to include centerpoint
+export interface HexagonProperties {
+    state_id: number;
+    continent_id: string;
+    centerpoint: Centerpoint;
+}
+
 export interface HexagonHoverInfo extends HoverInfo {
     object: {
-        properties: {
-            state_id: number;
-            continent_id: string;
-        };
+        properties: HexagonProperties;
     };
 }
