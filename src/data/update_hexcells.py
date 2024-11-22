@@ -2,12 +2,14 @@ import json
 import geopandas as gpd
 import numpy as np
 from shapely.geometry import shape, Point, MultiPolygon, box
+from shapely.ops import nearest_points
 import requests
 import zipfile
 import io
 import os
 
 # Note: Cell with state ID 171 is the Eastern tip of Russia, and was manually reclassified to AS_N from EU
+# Note: Cell with state ID 31 is the Western tip of Egypt, and was manually reclassified to AF_N from ME
 
 def download_natural_earth_data():
     """
@@ -31,6 +33,39 @@ def download_natural_earth_data():
             raise Exception(f"Failed to download data: HTTP {response.status_code}")
 
     return geojson_path
+
+
+def load_land_polygons(geojson_path):
+    """
+    Load and merge all land polygons from Natural Earth data
+    """
+    world = gpd.read_file(geojson_path)
+    # Dissolve all country polygons into a single land mass
+    land_mass = world.dissolve().geometry.iloc[0]
+    return land_mass
+
+
+def find_land_centerpoint(geometry, land_mass):
+    """
+    Find the centerpoint of a geometry that falls on land.
+    If the geometric centerpoint is not on land, find the nearest land point.
+
+    Args:
+        geometry: Shapely geometry of the hexcell
+        land_mass: Shapely geometry representing all land areas
+
+    Returns:
+        tuple: (longitude, latitude) of the centerpoint
+    """
+    centroid = geometry.centroid
+
+    # Check if centroid is on land
+    if land_mass.contains(centroid):
+        return (centroid.x, centroid.y)
+
+    # If not on land, find nearest point on land
+    nearest_land_point = nearest_points(centroid, land_mass)[1]
+    return (nearest_land_point.x, nearest_land_point.y)
 
 
 def load_continent_data(geojson_path):
@@ -144,30 +179,33 @@ def get_nearest_non_russian_continent(point, non_russian_geometries):
     return nearest_continent
 
 
-def process_features(geojson_data, continent_geometries, russia_geometry, non_russian_geometries):
+def process_features(geojson_data, continent_geometries, russia_geometry, non_russian_geometries, land_mass):
     """
-    Process each feature in the GeoJSON, adding state_id and continent_id
+    Process each feature in the GeoJSON, adding state_id, continent_id, and centerpoint
     """
     features = geojson_data['features']
 
     for idx, feature in enumerate(features, 1):
         geom = shape(feature['geometry'])
-        centroid = geom.centroid
 
         if 'properties' not in feature:
             feature['properties'] = {}
 
-        # Check if the cell intersects with Russia
+        # Find centerpoint on land
+        centerpoint = find_land_centerpoint(geom, land_mass)
+        feature['properties']['centerpoint'] = {
+            'longitude': round(centerpoint[0], 6),
+            'latitude': round(centerpoint[1], 6)
+        }
+
+        # Original continent classification logic
+        centroid = Point(centerpoint)  # Use the land-adjusted centerpoint for continent classification
         if geom.intersects(russia_geometry):
-            # If it's a border cell (intersects with Russia and extends beyond it)
             if not russia_geometry.contains(geom):
-                # Use the nearest non-Russian continental region
                 continent_id = get_nearest_non_russian_continent(centroid, non_russian_geometries)
             else:
-                # For cells fully within Russia, classify as AS_N
                 continent_id = 'AS_N'
         else:
-            # For non-Russian cells, use standard classification
             continent_id = get_nearest_continent(centroid, continent_geometries)
 
         feature['properties']['state_id'] = idx
@@ -185,6 +223,13 @@ def main():
 
         # Download and load Natural Earth data
         geojson_path = download_natural_earth_data()
+
+        # Load land polygons for centerpoint calculation
+        print("Loading land polygons...")
+        land_mass = load_land_polygons(geojson_path)
+
+        # Load continent data
+        print("Loading continent data...")
         continent_geometries, russia_geometry, non_russian_geometries = load_continent_data(geojson_path)
 
         # Read input file
@@ -194,7 +239,8 @@ def main():
 
         # Process the data
         print("Processing features...")
-        processed_data = process_features(input_data, continent_geometries, russia_geometry, non_russian_geometries)
+        processed_data = process_features(input_data, continent_geometries, russia_geometry, non_russian_geometries,
+                                          land_mass)
 
         # Write to new file
         print("Writing output file...")

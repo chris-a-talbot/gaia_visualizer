@@ -11,6 +11,10 @@
     {
       "type": "Feature",
       "properties": {
+        "centerpoint": {
+          "longitude": 23.821705,
+          "latitude": 69.670384
+        },
         "state_id": 1,
         "continent_id": "EU"
       },
@@ -71,6 +75,10 @@
     {
       "type": "Feature",
       "properties": {
+        "centerpoint": {
+          "longitude": 19.151692,
+          "latitude": 65.079968
+        },
         "state_id": 2,
         "continent_id": "EU"
       },
@@ -187,6 +195,10 @@
     {
       "type": "Feature",
       "properties": {
+        "centerpoint": {
+          "longitude": -18.761029,
+          "latitude": 65.074276
+        },
         "state_id": 3,
         "continent_id": "EU"
       },
@@ -283,6 +295,10 @@
     {
       "type": "Feature",
       "properties": {
+        "centerpoint": {
+          "longitude": 8.519813,
+          "latitude": 60.811114
+        },
         "state_id": 4,
         "continent_id": "EU"
       },
@@ -351,6 +367,10 @@
     {
       "type": "Feature",
       "properties": {
+        "centerpoint": {
+          "longitude": 2.19671,
+          "latitude": 50.241232
+        },
         "state_id": 5,
         "continent_id": "EU"
       },
@@ -415,6 +435,10 @@
     {
       "type": "Feature",
       "properties": {
+        "centerpoint": {
+          "longitude": -1.281001,
+          "latitude": 45.102567
+        },
         "state_id": 6,
         "continent_id": "EU"
       },
@@ -511,6 +535,10 @@
     {
       "type": "Feature",
       "properties": {
+        "centerpoint": {
+          "longitude": -6.134314,
+          "latitude": 39.536614
+        },
         "state_id": 7,
         "continent_id": "EU"
       },
@@ -639,6 +667,10 @@
     {
       "type": "Feature",
       "properties": {
+        "centerpoint": {
+          "longitude": -7.958311,
+          "latitude": 31.141439
+        },
         "state_id": 8,
         "continent_id": "AF_N"
       },
@@ -711,6 +743,10 @@
     {
       "type": "Feature",
       "properties": {
+        "centerpoint": {
+          "longitude": -11.979162,
+          "latitude": 24.737574
+        },
         "state_id": 9,
         "continent_id": "AF_N"
       },
@@ -799,6 +835,10 @@
     {
       "type": "Feature",
       "properties": {
+        "centerpoint": {
+          "longitude": -14.03554,
+          "latitude": 18.522788
+        },
         "state_id": 10,
         "continent_id": "AF_S"
       },
@@ -891,6 +931,10 @@
     {
       "type": "Feature",
       "properties": {
+        "centerpoint": {
+          "longitude": -15.058058,
+          "latitude": 12.75872
+        },
         "state_id": 11,
         "continent_id": "AF_S"
       },
@@ -995,6 +1039,10 @@
     {
       "type": "Feature",
       "properties": {
+        "centerpoint": {
+          "longitude": -9.389271,
+          "latitude": 13.085114
+        },
         "state_id": 12,
         "continent_id": "AF_S"
       },
@@ -1039,6 +1087,10 @@
     {
       "type": "Feature",
       "properties": {
+        "centerpoint": {
+          "longitude": -7.002084,
+          "latitude": 19.803938
+        },
         "state_id": 13,
         "continent_id": "AF_S"
       },
@@ -1083,6 +1135,10 @@
     {
       "type": "Feature",
       "properties": {
+        "centerpoint": {
+          "longitude": -4.359152,
+          "latitude": 26.598069
+        },
         "state_id": 14,
         "continent_id": "AF_N"
       },
@@ -1127,6 +1183,10 @@
     {
       "type": "Feature",
       "properties": {
+        "centerpoint": {
+          "longitude": 3.029134,
+          "latitude": 36.422453
+        },
         "state_id": 15,
         "continent_id": "AF_N"
       },
@@ -1171,6 +1231,10 @@
     {
       "type": "Feature",
       "properties": {
+        "centerpoint": {
+          "longitude": 6.121555,
+          "latitude": 46.705379
+        },
         "state_id": 16,
         "continent_id": "EU"
       },
@@ -1263,6 +1327,10 @@
     {
       "type": "Feature",
       "properties": {
+        "centerpoint": {
+          "longitude": -3.780009,
+          "latitude": 7.880046
+        },
         "state_id": 17,
         "continent_id": "AF_S"
       },
@@ -1339,6 +1407,10 @@
     {
       "type": "Feature",
       "properties": {
+        "centerpoint": {
+          "longitude": -1.183656,
+          "latitude": 13.939811
+        },
         "state_id": 18,
         "continent_id": "AF_S"
       },
@@ -1383,6 +1455,10 @@
     {
       "type": "Feature",
       "properties": {
+        "centerpoint": {
+          "longitude": 1.37289,
+          "latitude": 20.597952
+        },
         "state_id": 19,
         "continent_id": "AF_N"
       },
@@ -1427,6 +1503,10 @@
     {
       "type": "Feature",
       "properties": {
+        "centerpoint": {
+          "longitude": 4.467645,
+          "latitude": 27.285628
+        },
         "state_id": 20,
         "continent_id": "AF_N"
       },
@@ -1471,6 +1551,10 @@
     {
       "type": "Feature",
       "properties": {
+        "centerpoint": {
+          "longitude": 18.412072,
+          "latitude": 46.292124
+        },
         "state_id": 21,
         "continent_id": "EU"
       },
@@ -1587,6 +1671,10 @@
     {
       "type": "Feature",
       "properties": {
+        "centerpoint": {
+          "longitude": 6.792122,
+          "latitude": 14.286222
+        },
         "state_id": 22,
         "continent_id": "AF_S"
       },
@@ -1631,6 +1719,10 @@
     {
       "type": "Feature",
       "properties": {
+        "centerpoint": {
+          "longitude": 9.761393,
+          "latitude": 20.962818
+        },
         "state_id": 23,
         "continent_id": "AF_N"
       },
@@ -1675,6 +1767,10 @@
     {
       "type": "Feature",
       "properties": {
+        "centerpoint": {
+          "longitude": 13.422619,
+          "latitude": 27.359212
+        },
         "state_id": 24,
         "continent_id": "AF_N"
       },
@@ -1719,6 +1815,10 @@
     {
       "type": "Feature",
       "properties": {
+        "centerpoint": {
+          "longitude": 17.963315,
+          "latitude": 30.780729
+        },
         "state_id": 25,
         "continent_id": "AF_N"
       },
@@ -1807,6 +1907,10 @@
     {
       "type": "Feature",
       "properties": {
+        "centerpoint": {
+          "longitude": 9.991627,
+          "latitude": -0.103862
+        },
         "state_id": 26,
         "continent_id": "AF_S"
       },
@@ -1875,6 +1979,10 @@
     {
       "type": "Feature",
       "properties": {
+        "centerpoint": {
+          "longitude": 10.723947,
+          "latitude": 7.138536
+        },
         "state_id": 27,
         "continent_id": "AF_S"
       },
@@ -1951,6 +2059,10 @@
     {
       "type": "Feature",
       "properties": {
+        "centerpoint": {
+          "longitude": 14.277311,
+          "latitude": 14.090269
+        },
         "state_id": 28,
         "continent_id": "AF_S"
       },
@@ -1995,6 +2107,10 @@
     {
       "type": "Feature",
       "properties": {
+        "centerpoint": {
+          "longitude": 18.0,
+          "latitude": 20.904846
+        },
         "state_id": 29,
         "continent_id": "AF_N"
       },
@@ -2039,6 +2155,10 @@
     {
       "type": "Feature",
       "properties": {
+        "centerpoint": {
+          "longitude": 22.577381,
+          "latitude": 27.359212
+        },
         "state_id": 30,
         "continent_id": "AF_N"
       },
@@ -2083,8 +2203,12 @@
     {
       "type": "Feature",
       "properties": {
+        "centerpoint": {
+          "longitude": 26.781434,
+          "latitude": 30.957446
+        },
         "state_id": 31,
-        "continent_id": "ME"
+        "continent_id": "AF_N"
       },
       "geometry": {
         "type": "MultiPolygon",
@@ -2175,6 +2299,10 @@
     {
       "type": "Feature",
       "properties": {
+        "centerpoint": {
+          "longitude": 24.894355,
+          "latitude": 35.231124
+        },
         "state_id": 32,
         "continent_id": "EU"
       },
@@ -2235,6 +2363,10 @@
     {
       "type": "Feature",
       "properties": {
+        "centerpoint": {
+          "longitude": 12.904077,
+          "latitude": -5.818419
+        },
         "state_id": 33,
         "continent_id": "AF_S"
       },
@@ -2323,6 +2455,10 @@
     {
       "type": "Feature",
       "properties": {
+        "centerpoint": {
+          "longitude": 14.372226,
+          "latitude": 0.0
+        },
         "state_id": 34,
         "continent_id": "AF_S"
       },
@@ -2367,6 +2503,10 @@
     {
       "type": "Feature",
       "properties": {
+        "centerpoint": {
+          "longitude": 18.0,
+          "latitude": 7.020718
+        },
         "state_id": 35,
         "continent_id": "AF_S"
       },
@@ -2411,6 +2551,10 @@
     {
       "type": "Feature",
       "properties": {
+        "centerpoint": {
+          "longitude": 21.722689,
+          "latitude": 14.090269
+        },
         "state_id": 36,
         "continent_id": "AF_S"
       },
@@ -2455,6 +2599,10 @@
     {
       "type": "Feature",
       "properties": {
+        "centerpoint": {
+          "longitude": 26.238607,
+          "latitude": 20.962818
+        },
         "state_id": 37,
         "continent_id": "AF_N"
       },
@@ -2499,6 +2647,10 @@
     {
       "type": "Feature",
       "properties": {
+        "centerpoint": {
+          "longitude": 31.163183,
+          "latitude": 27.308043
+        },
         "state_id": 38,
         "continent_id": "ME"
       },
@@ -2643,6 +2795,10 @@
     {
       "type": "Feature",
       "properties": {
+        "centerpoint": {
+          "longitude": 13.218862,
+          "latitude": -19.2649
+        },
         "state_id": 39,
         "continent_id": "AF_S"
       },
@@ -2691,6 +2847,10 @@
     {
       "type": "Feature",
       "properties": {
+        "centerpoint": {
+          "longitude": 15.007806,
+          "latitude": -14.353017
+        },
         "state_id": 40,
         "continent_id": "AF_S"
       },
@@ -2783,6 +2943,10 @@
     {
       "type": "Feature",
       "properties": {
+        "centerpoint": {
+          "longitude": 18.0,
+          "latitude": -7.020718
+        },
         "state_id": 41,
         "continent_id": "AF_S"
       },
@@ -2827,6 +2991,10 @@
     {
       "type": "Feature",
       "properties": {
+        "centerpoint": {
+          "longitude": 21.627774,
+          "latitude": 0.0
+        },
         "state_id": 42,
         "continent_id": "AF_S"
       },
@@ -2871,6 +3039,10 @@
     {
       "type": "Feature",
       "properties": {
+        "centerpoint": {
+          "longitude": 25.317071,
+          "latitude": 7.075778
+        },
         "state_id": 43,
         "continent_id": "AF_S"
       },
@@ -2915,6 +3087,10 @@
     {
       "type": "Feature",
       "properties": {
+        "centerpoint": {
+          "longitude": 29.207878,
+          "latitude": 14.286222
+        },
         "state_id": 44,
         "continent_id": "AF_S"
       },
@@ -2959,6 +3135,10 @@
     {
       "type": "Feature",
       "properties": {
+        "centerpoint": {
+          "longitude": 33.852954,
+          "latitude": 20.29929
+        },
         "state_id": 45,
         "continent_id": "AF_N"
       },
@@ -3039,6 +3219,10 @@
     {
       "type": "Feature",
       "properties": {
+        "centerpoint": {
+          "longitude": 16.4707,
+          "latitude": -26.418691
+        },
         "state_id": 46,
         "continent_id": "AF_S"
       },
@@ -3099,6 +3283,10 @@
     {
       "type": "Feature",
       "properties": {
+        "centerpoint": {
+          "longitude": 18.066682,
+          "latitude": -20.876072
+        },
         "state_id": 47,
         "continent_id": "AF_S"
       },
@@ -3159,6 +3347,10 @@
     {
       "type": "Feature",
       "properties": {
+        "centerpoint": {
+          "longitude": 21.722689,
+          "latitude": -14.090269
+        },
         "state_id": 48,
         "continent_id": "AF_S"
       },
@@ -3203,6 +3395,10 @@
     {
       "type": "Feature",
       "properties": {
+        "centerpoint": {
+          "longitude": 25.317071,
+          "latitude": -7.075778
+        },
         "state_id": 49,
         "continent_id": "AF_S"
       },
@@ -3247,6 +3443,10 @@
     {
       "type": "Feature",
       "properties": {
+        "centerpoint": {
+          "longitude": 28.843489,
+          "latitude": 0.0
+        },
         "state_id": 50,
         "continent_id": "AF_S"
       },
@@ -3291,6 +3491,10 @@
     {
       "type": "Feature",
       "properties": {
+        "centerpoint": {
+          "longitude": 32.461549,
+          "latitude": 7.238831
+        },
         "state_id": 51,
         "continent_id": "AF_S"
       },
@@ -3335,6 +3539,10 @@
     {
       "type": "Feature",
       "properties": {
+        "centerpoint": {
+          "longitude": 36.887827,
+          "latitude": 13.743661
+        },
         "state_id": 52,
         "continent_id": "AF_S"
       },
@@ -3399,6 +3607,10 @@
     {
       "type": "Feature",
       "properties": {
+        "centerpoint": {
+          "longitude": 20.030016,
+          "latitude": -32.138721
+        },
         "state_id": 53,
         "continent_id": "AF_S"
       },
@@ -3503,6 +3715,10 @@
     {
       "type": "Feature",
       "properties": {
+        "centerpoint": {
+          "longitude": 22.577381,
+          "latitude": -27.359212
+        },
         "state_id": 54,
         "continent_id": "AF_S"
       },
@@ -3547,6 +3763,10 @@
     {
       "type": "Feature",
       "properties": {
+        "centerpoint": {
+          "longitude": 26.238607,
+          "latitude": -20.962818
+        },
         "state_id": 55,
         "continent_id": "AF_S"
       },
@@ -3591,6 +3811,10 @@
     {
       "type": "Feature",
       "properties": {
+        "centerpoint": {
+          "longitude": 29.207878,
+          "latitude": -14.286222
+        },
         "state_id": 56,
         "continent_id": "AF_S"
       },
@@ -3635,6 +3859,10 @@
     {
       "type": "Feature",
       "properties": {
+        "centerpoint": {
+          "longitude": 32.461549,
+          "latitude": -7.238831
+        },
         "state_id": 57,
         "continent_id": "AF_S"
       },
@@ -3679,6 +3907,10 @@
     {
       "type": "Feature",
       "properties": {
+        "centerpoint": {
+          "longitude": 35.94212,
+          "latitude": 0.0
+        },
         "state_id": 58,
         "continent_id": "AF_S"
       },
@@ -3723,6 +3955,10 @@
     {
       "type": "Feature",
       "properties": {
+        "centerpoint": {
+          "longitude": 39.686739,
+          "latitude": 7.213769
+        },
         "state_id": 59,
         "continent_id": "AF_S"
       },
@@ -3767,6 +4003,10 @@
     {
       "type": "Feature",
       "properties": {
+        "centerpoint": {
+          "longitude": 26.201676,
+          "latitude": -31.876868
+        },
         "state_id": 60,
         "continent_id": "AF_S"
       },
@@ -3847,6 +4087,10 @@
     {
       "type": "Feature",
       "properties": {
+        "centerpoint": {
+          "longitude": 30.113651,
+          "latitude": -26.696618
+        },
         "state_id": 61,
         "continent_id": "AF_S"
       },
@@ -3939,6 +4183,10 @@
     {
       "type": "Feature",
       "properties": {
+        "centerpoint": {
+          "longitude": 33.275946,
+          "latitude": -20.285908
+        },
         "state_id": 62,
         "continent_id": "AF_S"
       },
@@ -4035,6 +4283,10 @@
     {
       "type": "Feature",
       "properties": {
+        "centerpoint": {
+          "longitude": 36.787921,
+          "latitude": -13.749909
+        },
         "state_id": 63,
         "continent_id": "AF_S"
       },
@@ -4111,6 +4363,10 @@
     {
       "type": "Feature",
       "properties": {
+        "centerpoint": {
+          "longitude": 37.947752,
+          "latitude": -7.132191
+        },
         "state_id": 64,
         "continent_id": "AF_S"
       },
@@ -4211,6 +4467,10 @@
     {
       "type": "Feature",
       "properties": {
+        "centerpoint": {
+          "longitude": 41.98646,
+          "latitude": 1.433299
+        },
         "state_id": 65,
         "continent_id": "AF_S"
       },
@@ -4287,6 +4547,10 @@
     {
       "type": "Feature",
       "properties": {
+        "centerpoint": {
+          "longitude": 46.588821,
+          "latitude": 6.843453
+        },
         "state_id": 66,
         "continent_id": "AF_S"
       },
@@ -4351,6 +4615,10 @@
     {
       "type": "Feature",
       "properties": {
+        "centerpoint": {
+          "longitude": 43.760382,
+          "latitude": 10.777207
+        },
         "state_id": 67,
         "continent_id": "AF_S"
       },
@@ -4463,6 +4731,10 @@
     {
       "type": "Feature",
       "properties": {
+        "centerpoint": {
+          "longitude": 45.759382,
+          "latitude": 14.897915
+        },
         "state_id": 68,
         "continent_id": "ME"
       },
@@ -4583,6 +4855,10 @@
     {
       "type": "Feature",
       "properties": {
+        "centerpoint": {
+          "longitude": 40.628019,
+          "latitude": 26.742106
+        },
         "state_id": 69,
         "continent_id": "ME"
       },
@@ -4667,6 +4943,10 @@
     {
       "type": "Feature",
       "properties": {
+        "centerpoint": {
+          "longitude": 38.33804,
+          "latitude": 33.231405
+        },
         "state_id": 70,
         "continent_id": "ME"
       },
@@ -4775,6 +5055,10 @@
     {
       "type": "Feature",
       "properties": {
+        "centerpoint": {
+          "longitude": 50.138112,
+          "latitude": 10.795202
+        },
         "state_id": 71,
         "continent_id": "AF_S"
       },
@@ -4843,6 +5127,10 @@
     {
       "type": "Feature",
       "properties": {
+        "centerpoint": {
+          "longitude": 51.291534,
+          "latitude": 18.816191
+        },
         "state_id": 72,
         "continent_id": "ME"
       },
@@ -4931,6 +5219,10 @@
     {
       "type": "Feature",
       "properties": {
+        "centerpoint": {
+          "longitude": 48.212768,
+          "latitude": 24.758107
+        },
         "state_id": 73,
         "continent_id": "ME"
       },
@@ -5059,6 +5351,10 @@
     {
       "type": "Feature",
       "properties": {
+        "centerpoint": {
+          "longitude": 46.579621,
+          "latitude": 32.373262
+        },
         "state_id": 74,
         "continent_id": "ME"
       },
@@ -5135,6 +5431,10 @@
     {
       "type": "Feature",
       "properties": {
+        "centerpoint": {
+          "longitude": 42.187592,
+          "latitude": 46.400134
+        },
         "state_id": 75,
         "continent_id": "EU"
       },
@@ -5243,6 +5543,10 @@
     {
       "type": "Feature",
       "properties": {
+        "centerpoint": {
+          "longitude": 37.6643,
+          "latitude": 52.785101
+        },
         "state_id": 76,
         "continent_id": "EU"
       },
@@ -5287,6 +5591,10 @@
     {
       "type": "Feature",
       "properties": {
+        "centerpoint": {
+          "longitude": 56.760841,
+          "latitude": 19.0662
+        },
         "state_id": 77,
         "continent_id": "ME"
       },
@@ -5347,6 +5655,10 @@
     {
       "type": "Feature",
       "properties": {
+        "centerpoint": {
+          "longitude": 56.266436,
+          "latitude": 22.609321
+        },
         "state_id": 78,
         "continent_id": "ME"
       },
@@ -5479,6 +5791,10 @@
     {
       "type": "Feature",
       "properties": {
+        "centerpoint": {
+          "longitude": 59.070275,
+          "latitude": 26.354867
+        },
         "state_id": 79,
         "continent_id": "ME"
       },
@@ -5531,6 +5847,10 @@
     {
       "type": "Feature",
       "properties": {
+        "centerpoint": {
+          "longitude": 54.674751,
+          "latitude": 37.174759
+        },
         "state_id": 80,
         "continent_id": "ME"
       },
@@ -5635,6 +5955,10 @@
     {
       "type": "Feature",
       "properties": {
+        "centerpoint": {
+          "longitude": 53.342405,
+          "latitude": 45.278663
+        },
         "state_id": 81,
         "continent_id": "AS_N"
       },
@@ -5799,6 +6123,10 @@
     {
       "type": "Feature",
       "properties": {
+        "centerpoint": {
+          "longitude": 49.415491,
+          "latitude": 52.278539
+        },
         "state_id": 82,
         "continent_id": "AS_N"
       },
@@ -5843,6 +6171,10 @@
     {
       "type": "Feature",
       "properties": {
+        "centerpoint": {
+          "longitude": 64.41266,
+          "latitude": 28.157877
+        },
         "state_id": 83,
         "continent_id": "AS_S"
       },
@@ -5907,6 +6239,10 @@
     {
       "type": "Feature",
       "properties": {
+        "centerpoint": {
+          "longitude": 63.001091,
+          "latitude": 35.264308
+        },
         "state_id": 84,
         "continent_id": "AS_N"
       },
@@ -5951,6 +6287,10 @@
     {
       "type": "Feature",
       "properties": {
+        "centerpoint": {
+          "longitude": 61.959296,
+          "latitude": 42.914963
+        },
         "state_id": 85,
         "continent_id": "AS_N"
       },
@@ -5995,6 +6335,10 @@
     {
       "type": "Feature",
       "properties": {
+        "centerpoint": {
+          "longitude": 60.536235,
+          "latitude": 50.707711
+        },
         "state_id": 86,
         "continent_id": "AS_N"
       },
@@ -6039,6 +6383,10 @@
     {
       "type": "Feature",
       "properties": {
+        "centerpoint": {
+          "longitude": 75.087874,
+          "latitude": 16.527834
+        },
         "state_id": 87,
         "continent_id": "AS_S"
       },
@@ -6103,6 +6451,10 @@
     {
       "type": "Feature",
       "properties": {
+        "centerpoint": {
+          "longitude": 72.424563,
+          "latitude": 24.176444
+        },
         "state_id": 88,
         "continent_id": "AS_S"
       },
@@ -6179,6 +6531,10 @@
     {
       "type": "Feature",
       "properties": {
+        "centerpoint": {
+          "longitude": 71.243405,
+          "latitude": 31.840228
+        },
         "state_id": 89,
         "continent_id": "AS_N"
       },
@@ -6223,6 +6579,10 @@
     {
       "type": "Feature",
       "properties": {
+        "centerpoint": {
+          "longitude": 70.732021,
+          "latitude": 39.94245
+        },
         "state_id": 90,
         "continent_id": "AS_N"
       },
@@ -6267,6 +6627,10 @@
     {
       "type": "Feature",
       "properties": {
+        "centerpoint": {
+          "longitude": 70.808362,
+          "latitude": 47.896914
+        },
         "state_id": 91,
         "continent_id": "AS_N"
       },
@@ -6311,6 +6675,10 @@
     {
       "type": "Feature",
       "properties": {
+        "centerpoint": {
+          "longitude": 79.514511,
+          "latitude": 19.941979
+        },
         "state_id": 92,
         "continent_id": "AS_S"
       },
@@ -6375,6 +6743,10 @@
     {
       "type": "Feature",
       "properties": {
+        "centerpoint": {
+          "longitude": 79.044263,
+          "latitude": 27.844273
+        },
         "state_id": 93,
         "continent_id": "AS_S"
       },
@@ -6419,6 +6791,10 @@
     {
       "type": "Feature",
       "properties": {
+        "centerpoint": {
+          "longitude": 78.440034,
+          "latitude": 35.991865
+        },
         "state_id": 94,
         "continent_id": "AS_N"
       },
@@ -6463,6 +6839,10 @@
     {
       "type": "Feature",
       "properties": {
+        "centerpoint": {
+          "longitude": 79.719924,
+          "latitude": 44.090567
+        },
         "state_id": 95,
         "continent_id": "AS_N"
       },
@@ -6507,6 +6887,10 @@
     {
       "type": "Feature",
       "properties": {
+        "centerpoint": {
+          "longitude": 84.074843,
+          "latitude": 18.849097
+        },
         "state_id": 96,
         "continent_id": "AS_S"
       },
@@ -6551,6 +6935,10 @@
     {
       "type": "Feature",
       "properties": {
+        "centerpoint": {
+          "longitude": 86.042302,
+          "latitude": 23.855689
+        },
         "state_id": 97,
         "continent_id": "AS_S"
       },
@@ -6647,6 +7035,10 @@
     {
       "type": "Feature",
       "properties": {
+        "centerpoint": {
+          "longitude": 86.022774,
+          "latitude": 31.516823
+        },
         "state_id": 98,
         "continent_id": "AS_N"
       },
@@ -6691,6 +7083,10 @@
     {
       "type": "Feature",
       "properties": {
+        "centerpoint": {
+          "longitude": 87.129605,
+          "latitude": 39.62
+        },
         "state_id": 99,
         "continent_id": "AS_N"
       },
@@ -6735,6 +7131,10 @@
     {
       "type": "Feature",
       "properties": {
+        "centerpoint": {
+          "longitude": 94.865678,
+          "latitude": 19.541119
+        },
         "state_id": 100,
         "continent_id": "AS_S"
       },
@@ -6835,6 +7235,10 @@
     {
       "type": "Feature",
       "properties": {
+        "centerpoint": {
+          "longitude": 93.313651,
+          "latitude": 26.623086
+        },
         "state_id": 101,
         "continent_id": "AS_S"
       },
@@ -6879,6 +7283,10 @@
     {
       "type": "Feature",
       "properties": {
+        "centerpoint": {
+          "longitude": 93.693204,
+          "latitude": 34.739622
+        },
         "state_id": 102,
         "continent_id": "AS_N"
       },
@@ -6923,6 +7331,10 @@
     {
       "type": "Feature",
       "properties": {
+        "centerpoint": {
+          "longitude": 101.18972,
+          "latitude": 14.857059
+        },
         "state_id": 103,
         "continent_id": "AS_S"
       },
@@ -7027,6 +7439,10 @@
     {
       "type": "Feature",
       "properties": {
+        "centerpoint": {
+          "longitude": 100.236156,
+          "latitude": 21.502308
+        },
         "state_id": 104,
         "continent_id": "AS_S"
       },
@@ -7071,6 +7487,10 @@
     {
       "type": "Feature",
       "properties": {
+        "centerpoint": {
+          "longitude": 100.4869,
+          "latitude": 29.38764
+        },
         "state_id": 105,
         "continent_id": "AS_S"
       },
@@ -7115,6 +7535,10 @@
     {
       "type": "Feature",
       "properties": {
+        "centerpoint": {
+          "longitude": 108.0,
+          "latitude": 31.707172
+        },
         "state_id": 106,
         "continent_id": "AS_N"
       },
@@ -7155,6 +7579,10 @@
     {
       "type": "Feature",
       "properties": {
+        "centerpoint": {
+          "longitude": 102.980256,
+          "latitude": 37.167874
+        },
         "state_id": 107,
         "continent_id": "AS_N"
       },
@@ -7199,6 +7627,10 @@
     {
       "type": "Feature",
       "properties": {
+        "centerpoint": {
+          "longitude": 97.109632,
+          "latitude": 42.411978
+        },
         "state_id": 108,
         "continent_id": "AS_N"
       },
@@ -7243,6 +7675,10 @@
     {
       "type": "Feature",
       "properties": {
+        "centerpoint": {
+          "longitude": 90.003303,
+          "latitude": 47.430137
+        },
         "state_id": 109,
         "continent_id": "AS_N"
       },
@@ -7287,6 +7723,10 @@
     {
       "type": "Feature",
       "properties": {
+        "centerpoint": {
+          "longitude": 81.335542,
+          "latitude": 51.989728
+        },
         "state_id": 110,
         "continent_id": "AS_N"
       },
@@ -7331,6 +7771,10 @@
     {
       "type": "Feature",
       "properties": {
+        "centerpoint": {
+          "longitude": 70.831256,
+          "latitude": 55.79814
+        },
         "state_id": 111,
         "continent_id": "AS_N"
       },
@@ -7375,6 +7819,10 @@
     {
       "type": "Feature",
       "properties": {
+        "centerpoint": {
+          "longitude": 58.482014,
+          "latitude": 58.528337
+        },
         "state_id": 112,
         "continent_id": "AS_N"
       },
@@ -7419,6 +7867,10 @@
     {
       "type": "Feature",
       "properties": {
+        "centerpoint": {
+          "longitude": 44.831778,
+          "latitude": 59.90077
+        },
         "state_id": 113,
         "continent_id": "AS_N"
       },
@@ -7463,6 +7915,10 @@
     {
       "type": "Feature",
       "properties": {
+        "centerpoint": {
+          "longitude": 31.194617,
+          "latitude": 59.805094
+        },
         "state_id": 114,
         "continent_id": "EU"
       },
@@ -7547,6 +8003,10 @@
     {
       "type": "Feature",
       "properties": {
+        "centerpoint": {
+          "longitude": 115.5131,
+          "latitude": 29.38764
+        },
         "state_id": 115,
         "continent_id": "AS_S"
       },
@@ -7591,6 +8051,10 @@
     {
       "type": "Feature",
       "properties": {
+        "centerpoint": {
+          "longitude": 113.017355,
+          "latitude": 37.168749
+        },
         "state_id": 116,
         "continent_id": "AS_N"
       },
@@ -7643,6 +8107,10 @@
     {
       "type": "Feature",
       "properties": {
+        "centerpoint": {
+          "longitude": 108.0,
+          "latitude": 44.038976
+        },
         "state_id": 117,
         "continent_id": "AS_N"
       },
@@ -7687,6 +8155,10 @@
     {
       "type": "Feature",
       "properties": {
+        "centerpoint": {
+          "longitude": 101.738965,
+          "latitude": 49.770344
+        },
         "state_id": 118,
         "continent_id": "AS_N"
       },
@@ -7731,6 +8203,10 @@
     {
       "type": "Feature",
       "properties": {
+        "centerpoint": {
+          "longitude": 93.798416,
+          "latitude": 54.96327
+        },
         "state_id": 119,
         "continent_id": "AS_N"
       },
@@ -7775,6 +8251,10 @@
     {
       "type": "Feature",
       "properties": {
+        "centerpoint": {
+          "longitude": 83.67339,
+          "latitude": 59.779978
+        },
         "state_id": 120,
         "continent_id": "AS_N"
       },
@@ -7819,6 +8299,10 @@
     {
       "type": "Feature",
       "properties": {
+        "centerpoint": {
+          "longitude": 70.745724,
+          "latitude": 63.720407
+        },
         "state_id": 121,
         "continent_id": "AS_N"
       },
@@ -7899,6 +8383,10 @@
     {
       "type": "Feature",
       "properties": {
+        "centerpoint": {
+          "longitude": 55.60064,
+          "latitude": 65.643788
+        },
         "state_id": 122,
         "continent_id": "AS_N"
       },
@@ -8003,6 +8491,10 @@
     {
       "type": "Feature",
       "properties": {
+        "centerpoint": {
+          "longitude": 120.041974,
+          "latitude": 27.911106
+        },
         "state_id": 123,
         "continent_id": "AS_S"
       },
@@ -8067,6 +8559,10 @@
     {
       "type": "Feature",
       "properties": {
+        "centerpoint": {
+          "longitude": 119.752966,
+          "latitude": 34.331167
+        },
         "state_id": 124,
         "continent_id": "AS_N"
       },
@@ -8171,6 +8667,10 @@
     {
       "type": "Feature",
       "properties": {
+        "centerpoint": {
+          "longitude": 118.711004,
+          "latitude": 42.759274
+        },
         "state_id": 125,
         "continent_id": "AS_N"
       },
@@ -8263,6 +8763,10 @@
     {
       "type": "Feature",
       "properties": {
+        "centerpoint": {
+          "longitude": 114.261035,
+          "latitude": 49.770344
+        },
         "state_id": 126,
         "continent_id": "AS_N"
       },
@@ -8307,6 +8811,10 @@
     {
       "type": "Feature",
       "properties": {
+        "centerpoint": {
+          "longitude": 108.0,
+          "latitude": 56.512954
+        },
         "state_id": 127,
         "continent_id": "AS_N"
       },
@@ -8351,6 +8859,10 @@
     {
       "type": "Feature",
       "properties": {
+        "centerpoint": {
+          "longitude": 99.342765,
+          "latitude": 62.271002
+        },
         "state_id": 128,
         "continent_id": "AS_N"
       },
@@ -8395,6 +8907,10 @@
     {
       "type": "Feature",
       "properties": {
+        "centerpoint": {
+          "longitude": 87.670399,
+          "latitude": 67.55677
+        },
         "state_id": 129,
         "continent_id": "AS_N"
       },
@@ -8439,6 +8955,10 @@
     {
       "type": "Feature",
       "properties": {
+        "centerpoint": {
+          "longitude": 125.996697,
+          "latitude": 47.430137
+        },
         "state_id": 130,
         "continent_id": "AS_N"
       },
@@ -8483,6 +9003,10 @@
     {
       "type": "Feature",
       "properties": {
+        "centerpoint": {
+          "longitude": 122.201584,
+          "latitude": 54.96327
+        },
         "state_id": 131,
         "continent_id": "AS_N"
       },
@@ -8527,6 +9051,10 @@
     {
       "type": "Feature",
       "properties": {
+        "centerpoint": {
+          "longitude": 116.657235,
+          "latitude": 62.271002
+        },
         "state_id": 132,
         "continent_id": "AS_N"
       },
@@ -8571,6 +9099,10 @@
     {
       "type": "Feature",
       "properties": {
+        "centerpoint": {
+          "longitude": 108.0,
+          "latitude": 69.0938
+        },
         "state_id": 133,
         "continent_id": "AS_N"
       },
@@ -8615,6 +9147,10 @@
     {
       "type": "Feature",
       "properties": {
+        "centerpoint": {
+          "longitude": 96.5336,
+          "latitude": 73.955062
+        },
         "state_id": 134,
         "continent_id": "AS_N"
       },
@@ -8735,6 +9271,10 @@
     {
       "type": "Feature",
       "properties": {
+        "centerpoint": {
+          "longitude": 134.392347,
+          "latitude": 45.732861
+        },
         "state_id": 135,
         "continent_id": "AS_N"
       },
@@ -8807,6 +9347,10 @@
     {
       "type": "Feature",
       "properties": {
+        "centerpoint": {
+          "longitude": 132.313697,
+          "latitude": 59.78819
+        },
         "state_id": 136,
         "continent_id": "AS_N"
       },
@@ -8855,6 +9399,10 @@
     {
       "type": "Feature",
       "properties": {
+        "centerpoint": {
+          "longitude": 128.305646,
+          "latitude": 67.52357
+        },
         "state_id": 137,
         "continent_id": "AS_N"
       },
@@ -8911,6 +9459,10 @@
     {
       "type": "Feature",
       "properties": {
+        "centerpoint": {
+          "longitude": 117.462794,
+          "latitude": 73.245556
+        },
         "state_id": 138,
         "continent_id": "AS_N"
       },
@@ -9039,6 +9591,10 @@
     {
       "type": "Feature",
       "properties": {
+        "centerpoint": {
+          "longitude": 142.491119,
+          "latitude": 59.066408
+        },
         "state_id": 139,
         "continent_id": "AS_N"
       },
@@ -9087,6 +9643,10 @@
     {
       "type": "Feature",
       "properties": {
+        "centerpoint": {
+          "longitude": 145.199609,
+          "latitude": 63.785262
+        },
         "state_id": 140,
         "continent_id": "AS_N"
       },
@@ -9135,6 +9695,10 @@
     {
       "type": "Feature",
       "properties": {
+        "centerpoint": {
+          "longitude": 144.67163,
+          "latitude": 70.109699
+        },
         "state_id": 141,
         "continent_id": "AS_N"
       },
@@ -9215,6 +9779,10 @@
     {
       "type": "Feature",
       "properties": {
+        "centerpoint": {
+          "longitude": 155.243996,
+          "latitude": 61.073553
+        },
         "state_id": 142,
         "continent_id": "AS_N"
       },
@@ -9287,6 +9855,10 @@
     {
       "type": "Feature",
       "properties": {
+        "centerpoint": {
+          "longitude": 160.725324,
+          "latitude": 66.345151
+        },
         "state_id": 143,
         "continent_id": "AS_N"
       },
@@ -9379,6 +9951,10 @@
     {
       "type": "Feature",
       "properties": {
+        "centerpoint": {
+          "longitude": 163.05794,
+          "latitude": 56.15924
+        },
         "state_id": 144,
         "continent_id": "AS_N"
       },
@@ -9419,6 +9995,10 @@
     {
       "type": "Feature",
       "properties": {
+        "centerpoint": {
+          "longitude": 169.66689,
+          "latitude": 62.120399
+        },
         "state_id": 145,
         "continent_id": "AS_N"
       },
@@ -9507,6 +10087,10 @@
     {
       "type": "Feature",
       "properties": {
+        "centerpoint": {
+          "longitude": 106.501103,
+          "latitude": 12.041762
+        },
         "state_id": 146,
         "continent_id": "AS_S"
       },
@@ -9579,6 +10163,10 @@
     {
       "type": "Feature",
       "properties": {
+        "centerpoint": {
+          "longitude": 105.780835,
+          "latitude": 17.382722
+        },
         "state_id": 147,
         "continent_id": "AS_S"
       },
@@ -9647,6 +10235,10 @@
     {
       "type": "Feature",
       "properties": {
+        "centerpoint": {
+          "longitude": 107.996594,
+          "latitude": 24.860265
+        },
         "state_id": 148,
         "continent_id": "AS_S"
       },
@@ -9707,6 +10299,10 @@
     {
       "type": "Feature",
       "properties": {
+        "centerpoint": {
+          "longitude": -3.836455,
+          "latitude": 53.449748
+        },
         "state_id": 149,
         "continent_id": "EU"
       },
@@ -9967,6 +10563,10 @@
     {
       "type": "Feature",
       "properties": {
+        "centerpoint": {
+          "longitude": 9.047646,
+          "latitude": 40.689679
+        },
         "state_id": 150,
         "continent_id": "EU"
       },
@@ -10055,6 +10655,10 @@
     {
       "type": "Feature",
       "properties": {
+        "centerpoint": {
+          "longitude": 32.896372,
+          "latitude": 38.969223
+        },
         "state_id": 151,
         "continent_id": "ME"
       },
@@ -10247,6 +10851,10 @@
     {
       "type": "Feature",
       "properties": {
+        "centerpoint": {
+          "longitude": 23.247818,
+          "latitude": 41.020343
+        },
         "state_id": 152,
         "continent_id": "EU"
       },
@@ -10459,6 +11067,10 @@
     {
       "type": "Feature",
       "properties": {
+        "centerpoint": {
+          "longitude": 14.174932,
+          "latitude": 40.980886
+        },
         "state_id": 153,
         "continent_id": "EU"
       },
@@ -10683,6 +11295,10 @@
     {
       "type": "Feature",
       "properties": {
+        "centerpoint": {
+          "longitude": 55.697369,
+          "latitude": 30.497772
+        },
         "state_id": 154,
         "continent_id": "ME"
       },
@@ -10771,6 +11387,10 @@
     {
       "type": "Feature",
       "properties": {
+        "centerpoint": {
+          "longitude": -1.212442,
+          "latitude": 32.928907
+        },
         "state_id": 155,
         "continent_id": "AF_N"
       },
@@ -10863,6 +11483,10 @@
     {
       "type": "Feature",
       "properties": {
+        "centerpoint": {
+          "longitude": 7.700882,
+          "latitude": 33.540617
+        },
         "state_id": 156,
         "continent_id": "AF_N"
       },
@@ -11007,6 +11631,10 @@
     {
       "type": "Feature",
       "properties": {
+        "centerpoint": {
+          "longitude": 120.974857,
+          "latitude": 23.741254
+        },
         "state_id": 157,
         "continent_id": "AS_S"
       },
@@ -11067,6 +11695,10 @@
     {
       "type": "Feature",
       "properties": {
+        "centerpoint": {
+          "longitude": 43.682887,
+          "latitude": 20.241712
+        },
         "state_id": 158,
         "continent_id": "ME"
       },
@@ -11159,6 +11791,10 @@
     {
       "type": "Feature",
       "properties": {
+        "centerpoint": {
+          "longitude": -10.077008,
+          "latitude": 7.586875
+        },
         "state_id": 159,
         "continent_id": "AF_S"
       },
@@ -11259,6 +11895,10 @@
     {
       "type": "Feature",
       "properties": {
+        "centerpoint": {
+          "longitude": 3.724869,
+          "latitude": 8.241613
+        },
         "state_id": 160,
         "continent_id": "AF_S"
       },
@@ -11351,6 +11991,10 @@
     {
       "type": "Feature",
       "properties": {
+        "centerpoint": {
+          "longitude": -0.560895,
+          "latitude": 41.004364
+        },
         "state_id": 161,
         "continent_id": "EU"
       },
@@ -11451,6 +12095,10 @@
     {
       "type": "Feature",
       "properties": {
+        "centerpoint": {
+          "longitude": 44.182592,
+          "latitude": 39.161886
+        },
         "state_id": 162,
         "continent_id": "ME"
       },
@@ -11559,6 +12207,10 @@
     {
       "type": "Feature",
       "properties": {
+        "centerpoint": {
+          "longitude": 29.443159,
+          "latitude": 46.994214
+        },
         "state_id": 163,
         "continent_id": "EU"
       },
@@ -11703,6 +12355,10 @@
     {
       "type": "Feature",
       "properties": {
+        "centerpoint": {
+          "longitude": 127.26643,
+          "latitude": 39.915611
+        },
         "state_id": 164,
         "continent_id": "AS_N"
       },
@@ -11911,6 +12567,10 @@
     {
       "type": "Feature",
       "properties": {
+        "centerpoint": {
+          "longitude": 134.637794,
+          "latitude": 51.795699
+        },
         "state_id": 165,
         "continent_id": "AS_N"
       },
@@ -12011,6 +12671,10 @@
     {
       "type": "Feature",
       "properties": {
+        "centerpoint": {
+          "longitude": 159.333012,
+          "latitude": 56.122698
+        },
         "state_id": 166,
         "continent_id": "AS_N"
       },
@@ -12151,6 +12815,10 @@
     {
       "type": "Feature",
       "properties": {
+        "centerpoint": {
+          "longitude": 113.868597,
+          "latitude": 22.889875
+        },
         "state_id": 167,
         "continent_id": "AS_S"
       },
@@ -12291,6 +12959,10 @@
     {
       "type": "Feature",
       "properties": {
+        "centerpoint": {
+          "longitude": 14.617734,
+          "latitude": 58.949972
+        },
         "state_id": 168,
         "continent_id": "EU"
       },
@@ -12379,6 +13051,10 @@
     {
       "type": "Feature",
       "properties": {
+        "centerpoint": {
+          "longitude": 24.698815,
+          "latitude": 52.527488
+        },
         "state_id": 169,
         "continent_id": "EU"
       },
@@ -12443,6 +13119,10 @@
     {
       "type": "Feature",
       "properties": {
+        "centerpoint": {
+          "longitude": 11.806851,
+          "latitude": 52.136194
+        },
         "state_id": 170,
         "continent_id": "EU"
       },
@@ -12663,6 +13343,10 @@
     {
       "type": "Feature",
       "properties": {
+        "centerpoint": {
+          "longitude": 6.466158,
+          "latitude": 62.790378
+        },
         "state_id": 171,
         "continent_id": "AS_N"
       },
@@ -12883,6 +13567,10 @@
     {
       "type": "Feature",
       "properties": {
+        "centerpoint": {
+          "longitude": 74.07544,
+          "latitude": 70.223573
+        },
         "state_id": 172,
         "continent_id": "AS_N"
       },
@@ -13091,6 +13779,10 @@
     {
       "type": "Feature",
       "properties": {
+        "centerpoint": {
+          "longitude": 23.42656,
+          "latitude": 58.612753
+        },
         "state_id": 173,
         "continent_id": "EU"
       },
@@ -13199,6 +13891,10 @@
     {
       "type": "Feature",
       "properties": {
+        "centerpoint": {
+          "longitude": 78.503402,
+          "latitude": 11.526627
+        },
         "state_id": 174,
         "continent_id": "AS_S"
       },
@@ -13355,6 +14051,10 @@
     {
       "type": "Feature",
       "properties": {
+        "centerpoint": {
+          "longitude": 139.913243,
+          "latitude": 40.367398
+        },
         "state_id": 175,
         "continent_id": "AS_N"
       },
@@ -13795,6 +14495,10 @@
     {
       "type": "Feature",
       "properties": {
+        "centerpoint": {
+          "longitude": 101.289659,
+          "latitude": 5.500937
+        },
         "state_id": 176,
         "continent_id": "AS_S"
       },
@@ -13979,6 +14683,10 @@
     {
       "type": "Feature",
       "properties": {
+        "centerpoint": {
+          "longitude": 35.401759,
+          "latitude": 66.514529
+        },
         "state_id": 177,
         "continent_id": "EU"
       },
